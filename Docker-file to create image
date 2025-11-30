@@ -1,0 +1,36 @@
+
+#set the base image
+
+FROM ubuntu:latest
+
+#Author Details
+
+MAINTAINER sagar sagarmahadikbe15@gmail.com
+
+#Metadata Details
+
+LABEL "Name"="WebServer"\
+      "Project"="citi"\
+      "ENV"="Dev"
+
+#update images
+
+RUN apt update
+
+#Installing  apache2 apckages
+
+RUN apt install apache2 -y
+
+#Copying index.htmlfile to document lication
+
+ADD index.html /var/www/html/
+
+#Assign container prot
+
+EXPOSE 80
+
+#To make Service start
+
+ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
+
+
